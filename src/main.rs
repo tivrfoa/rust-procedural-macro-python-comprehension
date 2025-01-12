@@ -1,38 +1,25 @@
 use comp::comp;
 fn main() {
-    test_echo_no_if();
-    
-    // test_echo_reference_no_if();
-
-    test_single_if();
-
-    // test_two_ifs();
-
-    test_and();
-}
-
-fn test_echo_no_if() {
+    // no if
     let a: Vec<i32> = comp!(x for x in vec![1, 2, 3]).collect();
     dbg!(a);
-}
 
-// fn test_expression_in_mapping() {
-//     let a: Vec<i32> = comp!(x * 3 for x in vec![1, 2, 3]).collect();
-//     dbg!(a);
-// }
+    // // single if
+    // let a: Vec<i32> = comp!(x for x in vec![1, 2, 3] if x > 1).collect();
+    // dbg!(a);
 
-// fn test_echo_reference_no_if() {
-//     let v: Vec<i32> = vec![1, 2, 3];
-//     let a: Vec<i32> = comp!(x for x in v).collect();
-//     dbg!(a);
-// }
+    // // expression in mapping
+    // let a: Vec<i32> = comp!(x * 3 for x in vec![1, 2, 3]).collect();
+    // dbg!(a);
+    
+    // // Using a reference
+    // let v: Vec<i32> = vec![1, 2, 3];
+    // let a: Vec<i32> = comp!(x for x in v).collect();
+    // dbg!(a);
 
-fn test_single_if() {
-    let a: Vec<i32> = comp!(x for x in vec![1, 2, 3] if x > 1).collect();
-    dbg!(a);
-}
+    // // two ifs
 
-fn test_and() {
-    let a: Vec<i32> = comp!(x * 10 for x in vec![1, 2, 3] if x > 1 && (x == 2 || x == 3)).collect();
-    dbg!(a);
+    // // Testing && and ||
+    // let a: Vec<i32> = comp!(x * 10 for x in vec![1, 2, 3] if x > 1 && (x == 2 || x == 3)).collect();
+    // dbg!(a);
 }

@@ -58,8 +58,10 @@ impl ToTokens for Comprehension {
 
             let Mapping(mapping) = &self.mapping;
             dbg!(&pattern);
+            // dbg!(&pattern, &mapping, &conditions);
 
             if conditions.is_empty() {
+                dbg!("Using a simple map");
                 quote! {
                     core::iter::IntoIterator::into_iter(#sequence)
                             .map(|#pattern| #mapping)
@@ -76,6 +78,7 @@ impl ToTokens for Comprehension {
         // Now we walk through the rest of the ForIfClauses, wrapping the current `output` in a new layer of iteration each time.
         // We also add an extra call to '.flatten()'.
         output = innermost_to_outermost.fold(output, |current_output, next_layer| {
+            println!("folding ...");
             let ForIfClause {
                 pattern,
                 sequence,
@@ -144,6 +147,7 @@ impl Parse for Condition {
 
 impl ToTokens for Condition {
     fn to_tokens(&self, tokens: &mut TokenStream2) {
+        println!("Condition::to_tokens");
         self.0.to_tokens(tokens)
     }
 }
