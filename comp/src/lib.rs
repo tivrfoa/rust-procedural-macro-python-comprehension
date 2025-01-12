@@ -40,6 +40,7 @@ impl Parse for Comprehension {
 
 impl ToTokens for Comprehension {
     fn to_tokens(&self, tokens: &mut TokenStream2) {
+        dbg!(&tokens);
         let all_for_if_clauses =
             std::iter::once(&self.for_if_clause).chain(&self.additional_for_if_clauses);
         let mut innermost_to_outermost = all_for_if_clauses.rev();
@@ -56,11 +57,19 @@ impl ToTokens for Comprehension {
             } = innermost;
 
             let Mapping(mapping) = &self.mapping;
+            dbg!(&pattern);
 
-            quote! {
-                core::iter::IntoIterator::into_iter(#sequence).filter_map(move |#pattern| {
-                    (true #(&& (#conditions))*).then(|| #mapping)
-                })
+            if conditions.is_empty() {
+                quote! {
+                    core::iter::IntoIterator::into_iter(#sequence)
+                            .map(|#pattern| #mapping)
+                }
+            } else {
+                quote! {
+                    core::iter::IntoIterator::into_iter(#sequence).filter_map(|#pattern| {
+                        (true #(&& (#conditions))*).then(|| #mapping)
+                    })
+                }
             }
         };
 
