@@ -1,0 +1,335 @@
+let a: Vec<i32> = comp!(x for x in vec![1, 2, 3] if x > 1).collect();
+
+Mapping::parse -> gets ident x
+
+Input:
+
+```
+[comp/src/lib.rs:26:9] &input = TokenStream [
+    Ident {
+        ident: "x",
+        span: #0 bytes(56..57),
+    },
+    Ident {
+        ident: "for",
+        span: #0 bytes(58..61),
+    },
+    Ident {
+        ident: "x",
+        span: #0 bytes(62..63),
+    },
+    Ident {
+        ident: "in",
+        span: #0 bytes(64..66),
+    },
+    Ident {
+        ident: "vec",
+        span: #0 bytes(67..70),
+    },
+    Punct {
+        ch: '!',
+        spacing: Alone,
+        span: #0 bytes(70..71),
+    },
+    Group {
+        delimiter: Bracket,
+        stream: TokenStream [
+            Literal {
+                kind: Integer,
+                symbol: "1",
+                suffix: None,
+                span: #0 bytes(72..73),
+            },
+            Punct {
+                ch: ',',
+                spacing: Alone,
+                span: #0 bytes(73..74),
+            },
+            Literal {
+                kind: Integer,
+                symbol: "2",
+                suffix: None,
+                span: #0 bytes(75..76),
+            },
+            Punct {
+                ch: ',',
+                spacing: Alone,
+                span: #0 bytes(76..77),
+            },
+            Literal {
+                kind: Integer,
+                symbol: "3",
+                suffix: None,
+                span: #0 bytes(78..79),
+            },
+        ],
+        span: #0 bytes(71..80),
+    },
+    Ident {
+        ident: "if",
+        span: #0 bytes(81..83),
+    },
+    Ident {
+        ident: "x",
+        span: #0 bytes(84..85),
+    },
+    Punct {
+        ch: '>',
+        spacing: Alone,
+        span: #0 bytes(86..87),
+    },
+    Literal {
+        kind: Integer,
+        symbol: "1",
+        suffix: None,
+        span: #0 bytes(88..89),
+    },
+]
+```
+
+Mapping
+
+```
+[comp/src/lib.rs:28:9] &mapping = Mapping(
+    Expr::Path {
+        attrs: [],
+        qself: None,
+        path: Path {
+            leading_colon: None,
+            segments: [
+                PathSegment {
+                    ident: Ident {
+                        ident: "x",
+                        span: #0 bytes(56..57),
+                    },
+                    arguments: PathArguments::None,
+                },
+            ],
+        },
+    },
+)
+```
+
+ForIfClause
+
+```
+[comp/src/lib.rs:30:9] &for_if_clause = ForIfClause {
+    pattern: Pat::Ident {
+        attrs: [],
+        by_ref: None,
+        mutability: None,
+        ident: Ident {
+            ident: "x",
+            span: #0 bytes(62..63),
+        },
+        subpat: None,
+    },
+    sequence: Expr::Macro {
+        attrs: [],
+        mac: Macro {
+            path: Path {
+                leading_colon: None,
+                segments: [
+                    PathSegment {
+                        ident: Ident {
+                            ident: "vec",
+                            span: #0 bytes(67..70),
+                        },
+                        arguments: PathArguments::None,
+                    },
+                ],
+            },
+            bang_token: Not,
+            delimiter: MacroDelimiter::Bracket(
+                Bracket,
+            ),
+            tokens: TokenStream [
+                Literal {
+                    kind: Integer,
+                    symbol: "1",
+                    suffix: None,
+                    span: #0 bytes(72..73),
+                },
+                Punct {
+                    ch: ',',
+                    spacing: Alone,
+                    span: #0 bytes(73..74),
+                },
+                Literal {
+                    kind: Integer,
+                    symbol: "2",
+                    suffix: None,
+                    span: #0 bytes(75..76),
+                },
+                Punct {
+                    ch: ',',
+                    spacing: Alone,
+                    span: #0 bytes(76..77),
+                },
+                Literal {
+                    kind: Integer,
+                    symbol: "3",
+                    suffix: None,
+                    span: #0 bytes(78..79),
+                },
+            ],
+        },
+    },
+    conditions: [
+        Condition(
+            Expr::Binary {
+                attrs: [],
+                left: Expr::Path {
+                    attrs: [],
+                    qself: None,
+                    path: Path {
+                        leading_colon: None,
+                        segments: [
+                            PathSegment {
+                                ident: Ident {
+                                    ident: "x",
+                                    span: #0 bytes(84..85),
+                                },
+                                arguments: PathArguments::None,
+                            },
+                        ],
+                    },
+                },
+                op: BinOp::Gt(
+                    Gt,
+                ),
+                right: Expr::Lit {
+                    attrs: [],
+                    lit: Lit::Int {
+                        token: 1,
+                    },
+                },
+            },
+        ),
+    ],
+}
+```
+
+
+```
+[comp/src/lib.rs:32:9] &additional_for_if_clauses = []
+```
+
+```
+[comp/src/lib.rs:145:5] &c = Comprehension {
+    mapping: Mapping(
+        Expr::Path {
+            attrs: [],
+            qself: None,
+            path: Path {
+                leading_colon: None,
+                segments: [
+                    PathSegment {
+                        ident: Ident {
+                            ident: "x",
+                            span: #0 bytes(56..57),
+                        },
+                        arguments: PathArguments::None,
+                    },
+                ],
+            },
+        },
+    ),
+    for_if_clause: ForIfClause {
+        pattern: Pat::Ident {
+            attrs: [],
+            by_ref: None,
+            mutability: None,
+            ident: Ident {
+                ident: "x",
+                span: #0 bytes(62..63),
+            },
+            subpat: None,
+        },
+        sequence: Expr::Macro {
+            attrs: [],
+            mac: Macro {
+                path: Path {
+                    leading_colon: None,
+                    segments: [
+                        PathSegment {
+                            ident: Ident {
+                                ident: "vec",
+                                span: #0 bytes(67..70),
+                            },
+                            arguments: PathArguments::None,
+                        },
+                    ],
+                },
+                bang_token: Not,
+                delimiter: MacroDelimiter::Bracket(
+                    Bracket,
+                ),
+                tokens: TokenStream [
+                    Literal {
+                        kind: Integer,
+                        symbol: "1",
+                        suffix: None,
+                        span: #0 bytes(72..73),
+                    },
+                    Punct {
+                        ch: ',',
+                        spacing: Alone,
+                        span: #0 bytes(73..74),
+                    },
+                    Literal {
+                        kind: Integer,
+                        symbol: "2",
+                        suffix: None,
+                        span: #0 bytes(75..76),
+                    },
+                    Punct {
+                        ch: ',',
+                        spacing: Alone,
+                        span: #0 bytes(76..77),
+                    },
+                    Literal {
+                        kind: Integer,
+                        symbol: "3",
+                        suffix: None,
+                        span: #0 bytes(78..79),
+                    },
+                ],
+            },
+        },
+        conditions: [
+            Condition(
+                Expr::Binary {
+                    attrs: [],
+                    left: Expr::Path {
+                        attrs: [],
+                        qself: None,
+                        path: Path {
+                            leading_colon: None,
+                            segments: [
+                                PathSegment {
+                                    ident: Ident {
+                                        ident: "x",
+                                        span: #0 bytes(84..85),
+                                    },
+                                    arguments: PathArguments::None,
+                                },
+                            ],
+                        },
+                    },
+                    op: BinOp::Gt(
+                        Gt,
+                    ),
+                    right: Expr::Lit {
+                        attrs: [],
+                        lit: Lit::Int {
+                            token: 1,
+                        },
+                    },
+                },
+            ),
+        ],
+    },
+    additional_for_if_clauses: [],
+}
+```
