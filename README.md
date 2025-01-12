@@ -1,5 +1,5 @@
-(Comprehending Proc Macros)[https://www.youtube.com/watch?v=SMCRQj9Hbx8]
-(https://www.youtube.com/watch?v=SMCRQj9Hbx8)[https://www.youtube.com/watch?v=SMCRQj9Hbx8]
+[Comprehending Proc Macros](https://www.youtube.com/watch?v=SMCRQj9Hbx8)
+[https://www.youtube.com/watch?v=SMCRQj9Hbx8](https://www.youtube.com/watch?v=SMCRQj9Hbx8)
 
 Original code:
 
