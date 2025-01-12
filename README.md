@@ -1,3 +1,6 @@
+(Comprehending Proc Macros)[https://www.youtube.com/watch?v=SMCRQj9Hbx8]
+(https://www.youtube.com/watch?v=SMCRQj9Hbx8)[https://www.youtube.com/watch?v=SMCRQj9Hbx8]
+
 Original code:
 
 https://gist.github.com/kepler-5/065346184523890310e38bcf9adff03e
