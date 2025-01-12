@@ -5,7 +5,7 @@ Original code:
 
 https://gist.github.com/kepler-5/065346184523890310e38bcf9adff03e
 
-```
+```rust
 // Python comprehension proc macro that handles multiple nested for-if-clauses, flattening nested structure.
 // Example:
 //
